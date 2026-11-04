@@ -1,7 +1,5 @@
 # FOLLOW THE GREEN — version légère
 
-Cette archive contient tout le jeu sauf la vidéo, afin de faciliter le téléchargement.
-
 ## Ajouter la vidéo
 
 1. Prendre la vidéo originale.
