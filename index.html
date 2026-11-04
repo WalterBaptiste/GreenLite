@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#050505">
+  <meta name="description" content="FOLLOW THE GREEN — un jeu vidéo SPECTR × KEEP HUSH.">
+  <title>FOLLOW THE GREEN — SPECTR × KEEP HUSH</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <span>SPECTR</span><i>×</i><span>KEEP HUSH</span>
+      <button id="soundToggle" class="sound-toggle" type="button" aria-pressed="false">SOUND ON</button>
+    </header>
+
+    <section id="introScreen" class="screen intro-screen">
+      <div class="intro-poster" aria-hidden="true">
+        <img src="assets/poster.jpg" alt="">
+        <div class="intro-eye"><span></span></div>
+        <div class="noise"></div>
+      </div>
+      <div class="intro-copy">
+        <p class="kicker">VISUAL TEST // 20.11.2026</p>
+        <h1>DON’T<br>BLINK.</h1>
+        <p class="intro-text">Onze signaux verts sont cachés dans les images. Touche-les avant qu’ils disparaissent.</p>
+        <ul class="rules">
+          <li><b>+1000</b> si tu réagis instantanément</li>
+          <li><b>COMBO ×3</b> si tu ne rates aucun signal</li>
+          <li><b>−250</b> si tu touches au mauvais endroit</li>
+        </ul>
+        <button id="startButton" class="primary-button" type="button">OUVRIR LES YEUX</button>
+        <p class="microcopy">Son recommandé · 38 secondes · Prototype</p>
+      </div>
+    </section>
+
+    <section id="gameScreen" class="screen game-screen" hidden>
+      <div class="hud">
+        <div><small>SCORE</small><strong id="scoreText">00000</strong></div>
+        <div class="hud-center"><small>SIGNAL</small><strong><span id="hitText">00</span>/11</strong></div>
+        <div class="hud-right"><small>LUCIDITY</small><strong id="lucidityText">100%</strong></div>
+      </div>
+
+      <div id="videoStage" class="video-stage" style="--infection:0; --darkness:0">
+        <video id="gameVideo" playsinline preload="auto" poster="assets/poster.jpg">
+          <source src="assets/follow-the-green.mp4" type="video/mp4">
+        </video>
+
+        <div class="green-infection" aria-hidden="true"></div>
+        <div class="scanlines" aria-hidden="true"></div>
+        <div class="camera-frame" aria-hidden="true">
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+          <span class="rec">● REC</span>
+          <span class="code">KH_SIGNAL_026FD75</span>
+        </div>
+
+        <button id="signalTarget" class="signal-target" type="button" aria-label="Signal vert" hidden>
+          <span class="signal-ring"></span>
+          <span id="signalGlyph" class="signal-glyph">+</span>
+        </button>
+
+        <div id="feedback" class="feedback" aria-live="polite"></div>
+        <div id="fragment" class="fragment" aria-live="polite"></div>
+
+        <button id="resumeButton" class="resume-button" type="button" hidden>REPRENDRE LE SIGNAL</button>
+      </div>
+
+      <div class="game-footer">
+        <div class="progress"><i id="progressBar"></i></div>
+        <div class="combo-line"><span>COMBO</span><strong id="comboText">×1.0</strong></div>
+        <p>Touche uniquement les anomalies vertes.</p>
+      </div>
+    </section>
+
+    <section id="resultScreen" class="screen result-screen" hidden>
+      <p class="kicker">TRANSMISSION COMPLETE</p>
+      <h2 id="profileTitle">SIGNAL HUNTER</h2>
+
+      <div class="story-shell">
+        <canvas id="storyCanvas" width="1080" height="1920" aria-label="Aperçu de la Story personnalisée"></canvas>
+      </div>
+
+      <div class="result-grid">
+        <div><small>SCORE</small><strong id="finalScore">0</strong></div>
+        <div><small>SIGNAUX</small><strong id="finalSignals">0/11</strong></div>
+        <div><small>LUCIDITÉ</small><strong id="finalLucidity">0%</strong></div>
+      </div>
+
+      <p id="resultCopy" class="result-copy"></p>
+      <div id="unlockedFragments" class="unlocked-fragments"></div>
+
+      <div class="result-actions">
+        <button id="shareButton" class="primary-button" type="button">PARTAGER LA STORY</button>
+        <button id="replayButton" class="secondary-button" type="button">REJOUER</button>
+      </div>
+      <p class="microcopy">La version finale pourra enregistrer le meilleur score dans Google Sheets.</p>
+    </section>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
